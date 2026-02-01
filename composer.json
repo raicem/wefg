@@ -5,16 +5,47 @@
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
-            "Raicem\\Wefg\\": "src/"
-        }
+            "Raicem\\WEFG\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
     "authors": [
         {
             "name": "raicem"
         }
     ],
-    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0"
+    },
     "require-dev": {
-        "phpunit/phpunit": "11.5.x-dev"
+        "phpunit/phpunit": "^11.0",
+        "wp-cli/wp-cli-bundle": "^2.12@dev"
+    },
+    "scripts": {
+        "wp-install": [
+            "./wp-test core install --url=${WP_TEST_URL:-http://localhost:8080} --title='Test Site' --admin_user=${WP_TEST_ADMIN:-admin} --admin_password=${WP_TEST_ADMIN_PASSWORD:-password} --admin_email=${WP_TEST_ADMIN_EMAIL:-admin@example.com} --skip-email"
+        ],
+        "setup-wp-tests": [
+            "rm -rf tests/wordpress-test",
+            "mkdir -p tests/wordpress-test",
+            "./wp-test core download",
+            "./wp-test config create --dbname=${WP_TEST_DB:-wordpress_test} --dbuser=${WP_TEST_USER:-root} --dbpass=${WP_TEST_PASSWORD:-secret} --dbhost=${WP_TEST_HOST:-127.0.0.1:33060} --force",
+            "./wp-test db drop --yes || true",
+            "./wp-test db create",
+            "@wp-install",
+            "./wp-test plugin install wordpress-importer --activate"
+        ],
+        "reset-test-db": [
+            "./wp-test db reset --yes",
+            "@wp-install",
+            "./wp-test plugin activate wordpress-importer"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     }
 }

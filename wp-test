@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Execute WP-CLI commands for the test environment
+./vendor/bin/wp "$@" --path=tests/wordpress-test --allow-root 2>/dev/null

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+    <channel>
+        <title>Example WXR</title>
+        <link>http://localhost:2626</link>
+        <description></description>
+        <pubDate>Sun, 29 Dec 2024 19:58:14 +0000</pubDate>
+        <language>en-US</language>
+        <wp:wxr_version>1.2</wp:wxr_version>
+        <wp:base_site_url>http://localhost:2626</wp:base_site_url>
+        <wp:base_blog_url>http://localhost:2626</wp:base_blog_url>
+    </channel>
+</rss>
