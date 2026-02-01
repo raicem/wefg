@@ -10,6 +10,7 @@ class WXRFile {
     private $wxr;
     private $channel;
     public $posts = [];
+    private int $postIdCounter = 1000;
 
     public function __construct(SiteSettings $siteSettings) {
         $wxr = new \DomDocument('1.0', 'UTF-8');
@@ -96,7 +97,7 @@ class WXRFile {
         $postElement->appendChild($this->wxr->createElement('description'));
         $postElement->appendChild($this->elementWithCDATA('content:encoded', $post->content));
         $postElement->appendChild($this->elementWithCDATA('excerpt:encoded', $post->excerpt));
-        $postElement->appendChild($this->elementWithCDATA('wp:post_id', (string) ($post->postId ?: uniqid())));
+        $postElement->appendChild($this->elementWithCDATA('wp:post_id', (string) ($post->postId ?: $this->postIdCounter++)));
         $postElement->appendChild($this->elementWithCDATA('wp:post_date', $post->publishDate));
         $postElement->appendChild($this->elementWithCDATA('wp:post_date_gmt', $post->postDateGmt));
         $postElement->appendChild($this->elementWithCDATA('wp:post_modified', $post->postModified));

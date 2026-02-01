@@ -39,6 +39,7 @@ composer reset-test-db
 **WXRFile** (`src/WXRFile.php`) is the central orchestrator. It builds a DOMDocument representing the WXR XML, with methods to add authors, posts, categories, tags, and terms. It handles CDATA wrapping and hierarchical category sorting.
 
 **Content models** are simple data classes using PHP 8 constructor promotion:
+
 - `Post` — core content type; holds title, content, taxonomies, meta, comments
 - `Attachment` — extends Post, adds `attachment_url`, forces `post_type='attachment'`
 - `Author`, `Comment`, `Meta`, `SiteSettings` — supporting data classes
@@ -49,8 +50,8 @@ composer reset-test-db
 
 This project uses **integration test-driven development**. When implementing a new feature:
 
-1. Read `tmp/source-code/export.php` to understand what WordPress generates when exporting
-2. Read `tmp/source-code/class-wp-import.php` to understand what WordPress expects when importing
+1. Read `tmp/export.php` to understand what WordPress generates when exporting
+2. Read `tmp/class-wp-importer.php` to understand what WordPress expects when importing
 3. Write tests defining the expected behavior
 4. Write the implementation
 
