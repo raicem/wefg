@@ -10,7 +10,7 @@ WEFG generates a standard WXR XML file that can be imported using the built-in [
 composer require raicem/wefg
 ```
 
-Requires PHP 8.0+ and the DOM extension (included with most PHP installations).
+Requires PHP 7.4+ and the DOM extension (included with most PHP installations).
 
 ## Quick Start
 
